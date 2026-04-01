@@ -6,6 +6,7 @@ export default function Dashboard(){
 
   const categories = useSelector(state => state.categories)
   const products = useSelector(state => state.products)
+  console.log("🔥 products", products.items.length);
 
   const dispatch = useDispatch()    
   const navigate = useNavigate()
@@ -17,42 +18,6 @@ export default function Dashboard(){
   
 
   return (
-
-    // <div className="dashboard-container">
-
-    //   <h1 className="dashboard-title">Admin Dashboard</h1>
-    //    <button
-    //       onClick={handleLogout}
-    //       style={{
-    //         display:"flex",
-    //         justifyContent:"space-between",
-    //         alignItems:"center",  
-    //         padding: "8px 16px",
-    //         background: "red",
-    //         color: "#fff",
-    //         border: "none",
-    //         cursor: "pointer",
-    //         borderRadius: "6px"
-    //       }}
-    //     >
-    //       Logout
-    //     </button>
-
-    //   <div className="dashboard-cards">
-
-    //     <div className="stat-card category-card">
-    //       <p>Total Categories</p>
-    //       <h2>{categories.length}</h2>
-    //     </div>
-
-    //     <div className="stat-card product-card">
-    //       <p>Total Products</p>
-    //       <h2>{products.length}</h2>
-    //     </div>
-
-    //   </div>
-
-    // </div>
 
  <div className="dashboard-container">
 
@@ -92,7 +57,7 @@ export default function Dashboard(){
 
         <div className="stat-card product-card">
           <p>Total Products</p>
-          <h2>{products.length}</h2>
+          <h2>{products.items.length}</h2>
         </div>
 
       </div>

@@ -1,4 +1,3 @@
-
 // import { useDispatch, useSelector } from "react-redux"
 // import { addProduct } from "../Feautures/Products/ProductSlice.js"
 // import { useState } from "react"
@@ -377,7 +376,7 @@ export default function ProductForm() {
           onChange={(e)=>setForm({...form,stock:e.target.value})}
         />
 
-        <button type="submit">
+        <button className="btn btn-primary"  type="submit">
           Add Product
         </button>
 
