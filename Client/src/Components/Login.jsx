@@ -42,11 +42,15 @@ export default function Login() {
   // ✅ Listen for login success
   useEffect(() => {
     if (user) {
-      toast.success("Login successful 🎉");
-
-      setTimeout(() => {
+      toast.success("You Logged Successfully🎉",{
+  position: "top-center",
+  autoClose: 1000,
+      }   ),  {
+      
+      };
+      // setTimeout(() => {
         navigate("/dashboard");
-      }, 2500);
+      // }, 2500);
     }
   }, [user, navigate]);
 

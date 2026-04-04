@@ -10,11 +10,17 @@ export default function Dashboard(){
   const products = useSelector(state => state.products)
   console.log("🔥 products", products.items.length);
 
+  console.log("Product", products.items)
+
   const dispatch = useDispatch()    
   const navigate = useNavigate()
 
  const handleLogout = () => {
     dispatch(logout())
+    toast.error("You logged out successfully!", {
+  position: "top-center",
+  autoClose: 500,
+});
     navigate("/login")
   }
   
@@ -55,7 +61,7 @@ export default function Dashboard(){
       <div className="dashboard-cards">
         <div className="stat-card category-card">
           <p>Total Categories</p>
-          <h2>{categories.length}</h2>
+          <h2>{categories.items.length}</h2>
         </div>
         <div className="stat-card product-card">
           <p>Total Products</p>

@@ -2,12 +2,17 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
-                    
+// import categoryRoutes from "./routes/categoryRoutes";                 
+     
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+
+
+
 
 // Middleware
 app.use(cors());

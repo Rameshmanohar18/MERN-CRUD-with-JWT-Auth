@@ -1,47 +1,56 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { loadState, saveState } from "../../Utils/localStorage"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState = loadState("categories")
+const API = "http://localhost:5000/api/categories";
+
+export const fetchCategories = createAsyncThunk(
+  "categories/fetch",
+  async () => {
+    const res = await axios.get(API);
+    return res.data;
+  }
+);
+
+export const addCategory = createAsyncThunk(
+  "categories/add",
+  async (name) => {
+    const res = await axios.post(API, { name });
+    return res.data;
+  }
+);
+
+export const deleteCategory = createAsyncThunk(
+  "categories/delete",
+  async (id) => {
+    await axios.delete(`${API}/${id}`);
+    return id;
+  }
+);
 
 const categorySlice = createSlice({
   name: "categories",
-  initialState,
-  reducers: {
+  initialState: {
+    items: [],
+    loading: false
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
 
-    addCategory: (state, action) => {
-      const newCategory = {
-        id: Date.now().toString(),
-        name: action.payload
-      }
-      state.push(newCategory)
-      saveState("categories", state)
-    },
+      .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.items = action.payload;
+      })
 
+      .addCase(addCategory.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+      })
 
-
-    deleteCategory: (state, action) => {
-      const updated = state.filter(c => c.id !== action.payload)
-      saveState("categories", updated)
-      return updated
-    },
-
-    
-
-    updateCategory: (state, action) => {
-      const { id, name } = action.payload
-      const cat = state.find(c => c.id === id)                     
-      if (cat) {
-        cat.name = name
-      }
-      saveState("categories", state)
-    }
+      .addCase(deleteCategory.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          c => c._id !== action.payload
+        );
+      });
   }
-})
+});
 
-export const {
-  addCategory,
-  deleteCategory,
-  updateCategory
-} = categorySlice.actions
-
-export default categorySlice.reducer
+export default categorySlice.reducer;

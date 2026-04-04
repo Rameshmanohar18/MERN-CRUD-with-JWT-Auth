@@ -301,14 +301,101 @@
 
 
 
+// import { useDispatch, useSelector } from "react-redux";
+// import { addProduct } from "../Features/Products/ProductSlice.js";
+// import { useState } from "react";
+
+// export default function ProductForm() {
+
+//   const categories = useSelector(state => state.categories);
+//   const dispatch = useDispatch();
+
+//   const [form, setForm] = useState({
+//     name: "",
+//     price: "",
+//     stock: "",
+//     categoryId: ""
+//   });
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     dispatch(addProduct({
+//       name: form.name,
+//       price: Number(form.price),
+//       stock: Number(form.stock),
+//       categoryId: form.categoryId
+//     }));
+
+//     setForm({
+//       name: "",
+//       price: "",
+//       stock: "",
+//       categoryId: ""
+//     });
+//   };
+
+//   return (
+//     <div className="form-container">
+//       <form onSubmit={handleSubmit}>
+
+//         <h2>Add Product</h2>
+
+//       <select
+//   value={form.categoryId}
+//   onChange={(e) =>
+//     setForm({ ...form, categoryId: e.target.value })
+//   }
+// >
+//   <option value="">Select Category</option>
+
+//   {categories.map(cat => (
+//     <option key={cat._id} value={cat._id}>
+//       {cat.name}
+//     </option>
+//   ))}
+// </select>
+
+//         <input
+//           placeholder="Product Name"
+//           value={form.name}
+//           onChange={(e)=>setForm({...form,name:e.target.value})}
+//         />
+
+//         <input
+//           type="number"
+//           placeholder="Price"
+//           value={form.price}
+//           onChange={(e)=>setForm({...form,price:e.target.value})}
+//         />
+
+//         <input
+//           type="number"
+//           placeholder="Stock"
+//           value={form.stock}
+//           onChange={(e)=>setForm({...form,stock:e.target.value})}
+//         />
+
+//         <button className="btn btn-primary"  type="submit">
+//           Add Product
+//         </button>
+
+//       </form>
+//     </div>
+//   );
+// }
+
+
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../Features/Products/ProductSlice.js";
+import { addProduct } from "../Features/Products/ProductSlice";
 import { useState } from "react";
 
 export default function ProductForm() {
 
-  const categories = useSelector(state => state.categories);
   const dispatch = useDispatch();
+  const categories = useSelector(state => state.categories.items) ?? []  ;
+
+  console.log("🐙 categories", categories);
 
   const [form, setForm] = useState({
     name: "",
@@ -320,12 +407,21 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!form.name || !form.price || !form.stock || !form.categoryId) {
+      alert("Fill all fields");
+      return;
+    }
+
+    console.log("Sending:", form); // ✅ debug
+
     dispatch(addProduct({
       name: form.name,
       price: Number(form.price),
       stock: Number(form.stock),
-      categoryId: form.categoryId
+      categoryId: form.categoryId   // ✅ must be _id
     }));
+
+    console.log("🦜 addProduct", addProduct);
 
     setForm({
       name: "",
@@ -337,10 +433,11 @@ export default function ProductForm() {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
 
+      <form onSubmit={handleSubmit}>
         <h2>Add Product</h2>
 
+        {/* CATEGORY */}
         <select
           value={form.categoryId}
           onChange={(e) =>
@@ -356,31 +453,41 @@ export default function ProductForm() {
           ))}
         </select>
 
+        {/* NAME */}
         <input
           placeholder="Product Name"
           value={form.name}
-          onChange={(e)=>setForm({...form,name:e.target.value})}
+          onChange={(e) =>
+            setForm({ ...form, name: e.target.value })
+          }
         />
 
+        {/* PRICE */}
         <input
           type="number"
           placeholder="Price"
           value={form.price}
-          onChange={(e)=>setForm({...form,price:e.target.value})}
+          onChange={(e) =>
+            setForm({ ...form, price: e.target.value })
+          }
         />
 
+        {/* STOCK */}
         <input
           type="number"
           placeholder="Stock"
           value={form.stock}
-          onChange={(e)=>setForm({...form,stock:e.target.value})}
+          onChange={(e) =>
+            setForm({ ...form, stock: e.target.value })
+          }
         />
 
-        <button className="btn btn-primary"  type="submit">
+        <button className="btn btn-primary" type="submit">
           Add Product
         </button>
 
       </form>
+
     </div>
   );
 }

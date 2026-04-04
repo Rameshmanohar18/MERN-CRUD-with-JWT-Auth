@@ -89,7 +89,7 @@ export default function Register() {
     console.log("🥘 userData", userData);
     console.log("Submitting...");
 
-    toast.info("Account created successfully 🎉");
+    toast.success("Account created successfully 🎉");
 
     setTimeout(() => {
       navigate("/login");
