@@ -1,39 +1,31 @@
-/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", system-ui, sans-serif;
 }
-
 body {
   background: linear-gradient(135deg, #a49fa4, #2e6b26);
   min-height: 100vh;
   color: #0f172a;
 }
-
-/* ===== LAYOUT ===== */
 .container {
   max-width: 1300px;
   margin: auto;
   padding: 45px 25px;
 }
-
 .page-title {
   font-size: 38px;
   font-weight: 800;
   text-align: center;
   margin-bottom: 40px;
 }
-
-/* ===== DASHBOARD ===== */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 28px;
   margin-bottom: 40px;
 }
-
 .stat-card {
   background: rgba(202, 161, 74, 0.7);
   backdrop-filter: blur(14px);
@@ -42,32 +34,25 @@ body {
   text-align: center;
   border: 1px solid rgba(115, 20, 20, 0.5);
 }
-
 .stat-card h2 {
   font-size: 42px;
   margin-top: 12px;
 }
-
 .stat-card p {
   font-size: 14px;
 }
-
-/* ===== CARD ===== */
 .card {
-  background: white;
+  background: #fff;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
   margin-bottom: 35px;
 }
-
-/* ===== FORM ===== */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 18px;
 }
-
 input,
 select {
   width: 100%;
@@ -78,16 +63,13 @@ select {
   font-size: 14px;
   transition: 0.2s;
 }
-
 input:focus,
 select:focus {
   outline: none;
   border-color: #6366f1;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-  background: white;
+  background: #fff;
 }
-
-/* ===== BUTTON SYSTEM ===== */
 .btn {
   padding: 12px 20px;
   border-radius: 10px;
@@ -97,58 +79,45 @@ select:focus {
   cursor: pointer;
   transition: 0.25s ease;
 }
-
 .btn-primary {
   background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: white;
+  color: #fff;
 }
-
 .btn-danger {
   background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: white;
+  color: #fff;
 }
-
 .btn-success {
   background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
+  color: #fff;
 }
-
 .btn:hover {
   transform: translateY(-2px);
 }
-
-/* ===== TABLE ===== */
 .table-wrapper {
-  background: white;
+  background: #fff;
   border-radius: 20px;
   overflow: hidden;
 }
-
 .table {
   width: 100%;
   border-collapse: collapse;
 }
-
 .table thead {
   background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: white;
+  color: #fff;
 }
-
 .table th,
 .table td {
   padding: 16px;
   font-size: 14px;
 }
-
 .table tbody tr {
   border-bottom: 1px solid #f1f5f9;
 }
-
 .table tbody tr:hover {
   background: #f8faff;
 }
-
-/* ===== ACTION BUTTONS ===== */
 .action-btn {
   padding: 6px 12px;
   font-size: 12px;
@@ -157,26 +126,20 @@ select:focus {
   margin-right: 6px;
   border: none;
 }
-
 .edit-btn {
   background: #2563eb;
-  color: white;
+  color: #fff;
 }
-
 .delete-btn {
   background: #dc2626;
-  color: white;
+  color: #fff;
 }
-
-/* ===== PRODUCT IMAGE ===== */
 .product-img {
   width: 60px;
   height: 60px;
   border-radius: 10px;
   object-fit: cover;
 }
-
-/* ===== AMAZON AUTH (LOGIN + REGISTER) ===== */
 .amazon-container {
   height: 100vh;
   display: flex;
@@ -184,7 +147,6 @@ select:focus {
   align-items: center;
   background: #f2f2f2;
 }
-
 .amazon-card {
   width: 350px;
   background: #fff;
@@ -193,34 +155,27 @@ select:focus {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 .amazon-card h2 {
   margin-bottom: 15px;
   font-weight: 500;
 }
-
 .amazon-card label {
   font-size: 13px;
   font-weight: 600;
   margin-top: 10px;
   display: block;
 }
-
 .amazon-card input {
   margin-top: 5px;
   border: 1px solid #a6a6a6;
 }
-
 .amazon-card input:focus {
   border-color: #e77600;
   box-shadow: 0 0 3px #e77600;
 }
-
-/* Password toggle */
 .password-box {
   position: relative;
 }
-
 .password-box span {
   position: absolute;
   right: 10px;
@@ -228,8 +183,6 @@ select:focus {
   transform: translateY(-50%);
   cursor: pointer;
 }
-
-/* Amazon Button */
 .amazon-card button {
   width: 100%;
   margin-top: 18px;
@@ -240,36 +193,27 @@ select:focus {
   cursor: pointer;
   font-weight: 600;
 }
-
 .amazon-card button:hover {
   background: #f7ca00;
 }
-
 .amazon-card button:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
-
-/* Error */
 .error {
   color: red;
   font-size: 12px;
   margin-top: 3px;
 }
-
-/* Terms */
 .terms {
   font-size: 12px;
   margin-top: 12px;
   color: #555;
 }
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .container {
     padding: 30px 15px;
   }
-
   .page-title {
     font-size: 28px;
   }

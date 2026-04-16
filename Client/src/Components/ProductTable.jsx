@@ -55,9 +55,6 @@ export default function ProductTable() {
     setEditId(null);
   };
 
-  // ===========================
-  // DELETE
-  // ===========================
   const handleDelete = (id) => {
     const confirmDelete =
       window.confirm("Are you sure you want to delete?");
@@ -67,9 +64,7 @@ export default function ProductTable() {
     }
   };
 
-  // ===========================
-  // UI STATES
-  // ===========================
+
   if (loading) return <h3>Loading products...</h3>;
   if (error) return <h3>Error: {error}</h3>;
 
